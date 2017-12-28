@@ -20,8 +20,8 @@ public class ContactData {
     private final String secondaryHome;
     private final String notes;
 
-    public ContactData(String firstName, String middleName, String lastName, String nickName, String title,
-                       String company, String address, String home, String mobile, String work, String fax,
+    public ContactData(String firstName, String middleName, String lastName, String nickName, String company,
+                       String title, String address, String home, String mobile, String work, String fax,
                        String email, String email2, String email3, String homePage, String secondaryAddress,
                        String secondaryHome, String notes) {
         this.firstName = firstName;

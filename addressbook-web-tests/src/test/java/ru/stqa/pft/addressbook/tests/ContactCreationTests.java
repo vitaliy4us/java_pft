@@ -7,15 +7,15 @@ public class ContactCreationTests extends TestBase {
 
     @Test
     public void testContactCreation() {
-        app.getNavigationHelper().goToContactPage();
+        app.getNavigationHelper().goToHomePage();
         app.getContactHelper().initContactCreation();
         app.getContactHelper().fillContactForm(new ContactData("FIRST NAME", "MIDDLE NAME",
-                "LAST NAME", "NICK NAME", "TITLE", "COMPANY", "ADDRESS",
+                "LAST NAME", "NICK NAME", "COMPANY", "TITLE", "ADDRESS",
                 "HOME", "MOBILE", "WORK", "FAX", "EMAIL", "EMAIL2",
                 "EMAIL3", "HOMEPAGE", "SECONDARY ADDRESS",
                 "SECONDARY HOME", "NOTES"));
         app.getContactHelper().submitContactCreation();
-        app.getContactHelper().returnToHomePage();
+        app.getNavigationHelper().goToHomePage();
     }
 }
 

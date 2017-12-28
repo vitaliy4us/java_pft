@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.chrome.ChromeDriver;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -19,9 +20,9 @@ public class ContactHelper extends HelperBase {
         type(By.name("middlename"), contactData.getMiddleName());
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("nickname"), contactData.getNickName());
-        type(By.name("title"), contactData.getTitle());
         type(By.name("company"), contactData.getCompany());
-        type(By.name("address"), contactData.getCompany());
+        type(By.name("title"), contactData.getTitle());
+        type(By.name("address"), contactData.getAddress());
         type(By.name("home"), contactData.getHome());
         type(By.name("mobile"), contactData.getMobile());
         type(By.name("work"), contactData.getWork());
@@ -39,7 +40,14 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void returnToHomePage() {
-        click(By.linkText("home page"));
+    public void selectContact() {
+        if (!wd.findElement(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[1]/input")).isSelected()) {
+            click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[1]/input"));
+        }
+    }
+
+    public void deleteSelectedContact() {
+        click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+        if (ApplicatonManager.isAlertPresent(wd) == true) wd.switchTo().alert().accept();
     }
 }
